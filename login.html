@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Wealth Navigator | Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Roboto:wght@500&display=swap" rel="stylesheet">
+</head>
+<div id="particles-js"></div>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<!-- Welcome Overlay -->
+<div class="welcome-overlay" id="welcomeOverlay">
+  <div class="welcome-content">
+    <h1 class="welcome-title">The Wealth Navigator</h1>
+    <p class="overlay-slogan">Guiding Your Finances, Securing Your Future</p>
+  </div>
+</div>
+
+  
+  <div class="login-brand-top">
+    <h1>The Wealth Navigator</h1>
+  </div>
+  
+
+  <!-- Login Container -->
+  <div style="display: flex; justify-content: center; align-items: center; height: calc(100vh - 200px);">
+    <div class="login-box">
+      <h2>Sign In</h2>
+      <form onsubmit="return validateLogin()">
+        <div class="form-group">
+          <input type="text" id="email" placeholder="Email Address" required />
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" placeholder="Password" required />
+        </div>
+        <div class="form-options">
+          <input type="checkbox" id="remember" />
+          <label for="remember">Remember Me</label>
+        </div>
+        <button type="submit" class="btn">Sign in now</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function validateLogin() {
+      const user = document.getElementById("email").value;
+      const pass = document.getElementById("password").value;
+
+      if (user === "gopi" && pass === "2006") {
+        window.location.href = "home.html";
+      } else {
+        alert("❌ Invalid credentials. Use ID: gopi and Password: 2006");
+      }
+
+      return false; // prevent form submission
+    }
+
+    // Dismiss welcome overlay on click or key press
+    document.body.addEventListener("click", () => {
+      const overlay = document.querySelector(".welcome-overlay");
+      overlay.style.display = "none";
+    });
+
+    document.body.addEventListener("keydown", () => {
+      const overlay = document.querySelector(".welcome-overlay");
+      overlay.style.display = "none";
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60 },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.3 },
+        size: { value: 3 },
+        move: { speed: 1 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" }
+        }
+      },
+      background: {
+        color: "#000"
+      }
+    });
+  </script>
+  <script>
+    const texts = ["Welcome To The Wealth Navigator", "Guiding Your Finances, Securing Your Future"];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+  
+    function type() {
+      if (count === texts.length) count = 0;
+      currentText = texts[count];
+      letter = currentText.slice(0, ++index);
+  
+      document.getElementById('typed-text').textContent = letter;
+      if (letter.length === currentText.length) {
+        count++;
+        index = 0;
+        setTimeout(type, 1500);
+      } else {
+        setTimeout(type, 80);
+      }
+    }
+  
+    type();
+  </script>
+  <script>
+    function validateLogin() {
+      const user = document.getElementById("email").value;
+      const pass = document.getElementById("password").value;
+  
+      if (user === "Heisenberg" && pass === "2006") {
+        window.location.href = "home.html";
+      } else {
+        alert("❌ Invalid credentials. Use ID: say my name and Password: 2006");
+      }
+  
+      return false;
+    }
+  
+    // Dismiss overlay on click or key press
+    const overlay = document.getElementById("welcomeOverlay");
+    function dismissOverlay() {
+      overlay.style.opacity = "0";
+      setTimeout(() => (overlay.style.display = "none"), 600);
+    }
+  
+    document.body.addEventListener("click", dismissOverlay);
+    document.body.addEventListener("keydown", dismissOverlay);
+  </script>
+  <script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": {
+        "value": 50, // Number of particles (fireflies)
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
+      "color": {
+        "value": "#f1c40f" // Soft yellow glow for fireflies
+      },
+      "shape": {
+        "type": "circle", // Circular firefly shapes
+        "stroke": {
+          "width": 0,
+          "color": "#ffffff"
+        }
+      },
+      "opacity": {
+        "value": 0.6,
+        "random": true,
+        "anim": {
+          "enable": true,
+          "speed": 1,
+          "opacity_min": 0.1
+        }
+      },
+      "size": {
+        "value": 3, // Fireflies' size
+        "random": true,
+        "anim": {
+          "enable": true,
+          "speed": 3,
+          "size_min": 0.5
+        }
+      },
+      "line_linked": {
+        "enable": false // No lines between particles
+      },
+      "move": {
+        "enable": true,
+        "speed": 0.8, // Slow movement of fireflies
+        "direction": "random",
+        "random": true,
+        "straight": false,
+        "out_mode": "out"
+      }
+    },
+    "interactivity": {
+      "detect_on": "window",
+      "events": {
+        "onhover": {
+          "enable": true,
+          "mode": "repulse"
+        },
+        "onclick": {
+          "enable": true,
+          "mode": "push"
+        }
+      }
+    },
+    "retina_detect": true
+  });
+</script>
+  
+</body>
+</html>

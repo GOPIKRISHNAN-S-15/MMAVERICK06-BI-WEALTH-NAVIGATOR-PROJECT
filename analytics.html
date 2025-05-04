@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Analytics Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #000;
+  color: #f0f0f0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Navbar Now Full Width */
+.navbar {
+  width: 100%;
+  background-color: #1f1f2e;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Centered Title */
+h1 {
+  color: #00ffd5;
+  font-size: 40px;
+  text-align: center;
+  margin-top: 30px;
+  width: 100%;
+}
+
+/* Fully Centered Descriptive Text */
+p.description {
+  color: #f0f0f0;
+  font-size: 22px;
+  text-align: center;
+  width: 80%;
+  margin-top: 15px;
+}
+
+/* Larger Box Container */
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 85%;
+  margin-top: 50px;
+}
+
+/* Even Bigger Individual Boxes */
+.card {
+  background-color: #292929;
+  padding: 40px;
+  border-radius: 15px;
+  flex: 1;
+  min-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 15px #00ffd5;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  background-color: #00ffd5;
+  color: #000;
+}
+    .navbar {
+      background-color: #1f1f2e;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #00ffd5;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background-color: #00ffd5;
+      color: #000;
+      border-radius: 5px;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    h1 {
+      color: #00ffd5;
+    }
+
+    .card-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #292929;
+  padding: 40px;
+  border-radius: 15px;
+  min-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 15px #00ffd5;
+  cursor: pointer;
+  transition: 0.3s;
+}
+    .card:hover {
+      background-color: #00ffd5;
+      color: #000;
+    }
+
+    /* Modal styling */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #292929;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffd5;
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #00ffd5;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 10px;
+      border: 2px solid #00ffd5;
+    }
+
+    /* Blur only background */
+    .blurred {
+      filter: blur(5px);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Cognos Insights</div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="ContactUs.html">Contact Us</a></li>
+      <li><a href="AboutUs.html">About Us</a></li>
+      <li><a href="logout.html">Logout</a></li>
+    </ul>
+  </nav>
+  <div class="content">
+    <h1>Analytics Page</h1>
+    <div class="card-container">
+      <div class="card" onclick="showVisualization('revenue-analysis')">
+        <h3>Revenue Analysis</h3>
+        <p>Analyze revenue growth across quarters.</p>
+      </div>
+      <div class="card" onclick="showVisualization('market-trends')">
+        <h3>Market Trends</h3>
+        <p>Observe market trend fluctuations.</p>
+      </div>
+      <div class="card" onclick="showVisualization('financial-health')">
+        <h3>Financial Health</h3>
+        <p>Track financial stability over fiscal years.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">X</button>
+      <canvas id="chartCanvas"></canvas>
+    </div>
+  </div>
+
+  <script>
+   let activeChart = null;
+
+function showVisualization(sectionId) {
+  document.querySelector('.content').classList.add('blurred'); // Blur background only
+  document.getElementById('modal').style.display = 'flex';
+
+  let ctx = document.getElementById('chartCanvas').getContext('2d');
+  if (activeChart) activeChart.destroy(); // Clear previous chart
+
+  let chartData = {};
+  let chartType = '';
+
+  // Create gradient backgrounds
+  let gradientBg = ctx.createLinearGradient(0, 0, 0, 400);
+  gradientBg.addColorStop(0, '#00ffd5');
+  gradientBg.addColorStop(1, '#121212');
+
+  if (sectionId === 'revenue-analysis') {
+    chartData = {
+      labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+      datasets: [{
+        label: 'Revenue Growth',
+        data: [5000, 7000, 6000, 8000],
+        backgroundColor: gradientBg,
+        borderColor: '#00ffd5',
+        borderWidth: 3,
+        hoverBorderWidth: 5
+      }]
+    };
+    chartType = 'bar';
+  } else if (sectionId === 'market-trends') {
+    chartData = {
+      labels: ['2021', '2022', '2023', '2024'],
+      datasets: [{
+        label: 'Market Trends',
+        data: [50, 60, 70, 65],
+        borderColor: '#00ffd5',
+        borderWidth: 3,
+        tension: 0.4,
+        pointRadius: 6,
+        pointHoverRadius: 10
+      }]
+    };
+    chartType = 'line';
+  } else if (sectionId === 'financial-health') {
+    chartData = {
+      labels: ['Company A', 'Company B', 'Company C', 'Company D'],
+      datasets: [{
+        label: 'Financial Health',
+        data: [40, 25, 15, 20],
+        backgroundColor: ['#00ffd5', '#292929', '#1f1f2e', '#ff6347'],
+        borderColor: '#ffffff',
+        borderWidth: 2
+      }]
+    };
+    chartType = 'pie';
+  }
+
+  activeChart = new Chart(ctx, {
+    type: chartType,
+    data: chartData,
+    options: {
+      plugins: {
+        tooltip: {
+          enabled: true,
+          mode: 'index',
+          intersect: false
+        },
+        legend: {
+          labels: {
+            color: '#ffffff'
+          }
+        }
+      },
+      animation: {
+        duration: 1500,
+        easing: 'easeInOutQuart'
+      }
+    }
+  });
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+  document.querySelector('.content').classList.remove('blurred');
+}
+// Generate rain effect
+// Create rain container
+// Function to generate rain
+// Function to generate rain
+// Function to generate slow rain
+// Function to generate round raindrops with random sizes
+// Function to generate slow white raindrops
+// Function to generate slow white raindrops over full screen
+function createRain() {
+  const rainContainer = document.createElement('div');
+  rainContainer.classList.add('rain-container');
+  document.body.appendChild(rainContainer);
+
+  for (let i = 0; i < 80; i++) { // Adjust rain density
+    let drop = document.createElement('div');
+    let size = Math.random() * 12 + 6; // Bigger raindrops for visibility
+
+    drop.classList.add('rain-drop');
+    drop.style.setProperty('--size', `${size}px`);
+    drop.style.left = `${Math.random() * window.innerWidth}px`; // Spread across full width
+    drop.style.animationDuration = `${Math.random() * 10 + 6}s`; // Slow fall
+    
+    rainContainer.appendChild(drop);
+  }
+}
+
+// Activate rain effect on page load
+window.onload = () => {
+  createRain();
+};
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent default action
+
+      let linkText = link.textContent.trim().toLowerCase();
+      let destinationUrl = '';
+
+      // Handling each link
+      switch(linkText) {
+        case "home":
+          destinationUrl = "home.html";
+          break;
+        case "dashboard":
+          destinationUrl = "dashboard.html";
+          break;
+        case "reports":
+          destinationUrl = "reports.html";
+          break;
+        case "contact us":
+          destinationUrl = "ContactUs.html";
+          break;
+        case "about us":
+          destinationUrl = "AboutUs.html";
+          break;
+        case "logout":
+          destinationUrl = "logout.html";
+          break;
+        default:
+          console.warn(`No action defined for link: ${linkText}`);
+      }
+
+      if (destinationUrl) {
+        window.location.href = destinationUrl;
+      }
+    });
+  });
+});
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Dashboard - The Wealth Navigator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      overflow-x: hidden;
+      height: 100%;
+    }
+
+    /* Navigation Bar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #121212;
+      padding: 15px 50px;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-start;
+      gap: 40px;
+    }
+
+    nav ul li {
+      display: inline-block;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #FF4081;
+    }
+
+    /* Background (Particles.js) */
+    #particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* stays full screen */
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+    /* Layout & Container */
+    .container {
+      padding: 50px 20px 80px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      color: #FF4081;
+      margin-bottom: 30px;
+      animation: fadeInUp 2s ease-out;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      animation: fadeInUp 2s ease-out 1s;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 40px 20px;
+      margin-bottom: 40px;
+    }
+
+    .section h2 {
+      font-size: 40px;
+      margin-bottom: 30px;
+      color: #FF4081;
+      animation: fadeInUp 2s ease-out 1s;
+    }
+
+    .section p {
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 900px;
+      margin: 0 auto 30px;
+      animation: fadeInUp 2s ease-out 2s;
+    }
+
+    .section .highlight {
+      color: #FF4081;
+      font-weight: bold;
+    }
+
+    /* Contact Us Button */
+    .contact-us {
+      background-color: #FF4081;
+      color: white;
+      padding: 15px 40px;
+      font-size: 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      animation: fadeInUp 2s ease-out 3s;
+    }
+
+    .contact-us:hover {
+      background-color: #f50057;
+    }
+
+    /* Footer Section */
+    footer {
+      background-color: #121212;
+      padding: 20px;
+      text-align: center;
+      color: #bbb;
+    }
+
+    footer a {
+      color: #FF4081;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .core-values {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.core-values h3 {
+  font-size: 22px;
+  color: #FF4081;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.core-values p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="charts.html">Features</a></li> <!-- This is the Features button -->
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+      <li><a href="analytics.html">Analytics</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="logout.html">Logout</a></li>
+    </ul>
+  </nav>
+  
+
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+
+  <div class="container">
+    <!-- Hero Section: About Us Content -->
+    <section class="hero">
+      <h1 class="animate__animated animate__fadeInUp">Welcome to The Wealth Navigator</h1>
+      <p class="animate__animated animate__fadeInUp">The Wealth Navigator allows you to visualize your wealth in an interactive dashboard format. Our platform provides businesses with the ability to see and track their financial data, offering clear insights into their wealth management, all thanks to the powerful capabilities of IBM Cognos.</p>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section class="section">
+      <h2 class="animate__animated animate__fadeInUp">Our Vision</h2>
+      <p class="animate__animated animate__fadeInUp">Our vision is to be a leader in financial visualization, enabling businesses to gain a clear understanding of their financial standing. Through clear viualizations in a dashboard, we make complex financial data accessible and actionable for decision-makers, ensuring that every business has the clarity to navigate their financial journey with confidence.</p>
+    </section>
+
+    <section class="section">
+      <h2 class="animate__animated animate__fadeInUp">Our Mission</h2>
+      <p class="animate__animated animate__fadeInUp">Our mission is to simplify wealth management. By providing a dynamic, interactive dashboard, we help businesses track and visualize their wealth. We offer an intuitive platform where businesses can analyze their financial data effortlessly, ensuring they make informed and timely decisions for future growth.</p>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="section">
+      <h2 class="animate__animated animate__fadeInUp">Our Core Values</h2>
+      <div class="core-values animate__animated animate__fadeInUp">
+        <h3>Integrity</h3>
+        <p>We build trust with transparency and honesty in everything we do.</p>
+    
+        <h3>Innovation</h3>
+        <p>We harness cutting-edge technology like IBM Cognos to bring innovative solutions to financial visualization.</p>
+    
+        <h3>Clarity</h3>
+        <p>We provide businesses with clear, actionable insights through intuitive dashboards.</p>
+    
+        <h3>Empowerment</h3>
+        <p>We empower businesses to take control of their financial future by giving them access to data-driven insights.</p>
+      </div>
+    </section>
+    
+
+    <!-- Contact Us Button -->
+    <section class="section">
+      <a href="ContactUs.html" class="contact-us">Contact Us</a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; 2025 The Wealth Navigator | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | Jon Snow@mkce.ac.in</p>
+    </footer>
+  </div>
+
+  <script>
+    // Particles.js configuration
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 100,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 1,
+            "opacity_min": 0.1
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 40,
+            "size_min": 0.1
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+
+</body>
+</html>

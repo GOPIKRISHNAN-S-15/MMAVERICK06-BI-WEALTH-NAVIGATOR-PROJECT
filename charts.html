@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>📊 Financial Insights Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      padding: 40px 20px;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      color: #f9f9f9;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    }
+
+    .navbar {
+      background-color: #111;
+      color: #fff;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+      width: 100%;
+    }
+
+    .navbar .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .nav-links a {
+      color: #eee;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .navbar .nav-links a:hover {
+      color: gold;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 columns */
+      grid-template-rows: repeat(2, 1fr);   /* 2 rows */
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 20px;
+    }
+
+    .chart-box {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 270px;  /* Slightly larger box size */
+      max-width: 100%;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .box-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 12px;
+    }
+
+    .chart-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffd700;
+      flex-grow: 1;
+    }
+
+    .desc {
+      color: #ccc;
+      font-size: 14px;
+      line-height: 1.4;
+      margin-top: 10px;
+      flex-grow: 1;
+    }
+
+    /* Fireflies background */
+    #firefliesCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="firefliesCanvas"></canvas>
+
+<!-- Navigation -->
+<div class="navbar">
+  <div class="logo">📊 Cognos Dashboard</div>
+  <div class="nav-links">
+    <a href="home.html">Home</a>
+    <a href="reports.html">Reports</a>
+    <a href="analytics.html">Analytics</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="AboutUs.html">About</a>
+    <a href="Contactus.html">Contact Us</a>
+  </div>
+</div>
+
+<h1>Financial Insights Dashboard</h1>
+
+<!-- Chart Boxes -->
+<div class="container">
+  <div class="chart-box">
+    <div class="box-header">
+      <i class="fas fa-chart-pie" style="font-size: 30px; color: gold;"></i>
+      <div class="chart-title">Debt-to-Equity vs Funding</div>
+    </div>
+    <div class="desc">Visualizes the company's debt-to-equity ratio against funding sources across fiscal years. This helps stakeholders understand financial leverage and the company's risk level. The higher the debt-to-equity ratio, the more the company relies on debt for growth.</div>
+  </div>
+
+  <div class="chart-box">
+    <div class="box-header">
+      <i class="fas fa-chart-line" style="font-size: 30px; color: gold;"></i>
+      <div class="chart-title">Expense vs Funding Trend</div>
+    </div>
+    <div class="desc">Tracks monthly expenses and funding inflows to guide budget planning and alignment. Monitoring this trend can help ensure the business is not overspending while maintaining adequate funding sources. This analysis provides actionable insights for long-term sustainability.</div>
+  </div>
+
+  <div class="chart-box">
+    <div class="box-header">
+      <i class="fas fa-chart-bar" style="font-size: 30px; color: gold;"></i>
+      <div class="chart-title">Operating Costs vs Funding</div>
+    </div>
+    <div class="desc">Combines bar and line data to compare operating costs with funding monthly. By analyzing the interaction between funding and operating costs, we can identify any cash flow gaps and take corrective actions to improve liquidity.</div>
+  </div>
+
+  <div class="chart-box">
+    <div class="box-header">
+      <i class="fas fa-building" style="font-size: 30px; color: gold;"></i>
+      <div class="chart-title">Financial Health by Company</div>
+    </div>
+    <div class="desc">Displays a pie chart showing the financial health and contribution of each company. It allows users to compare companies' debt-to-equity ratios and determine which are in better financial shape for potential mergers or investments.</div>
+  </div>
+
+  <div class="chart-box">
+    <div class="box-header">
+      <i class="fas fa-users" style="font-size: 30px; color: gold;"></i>
+      <div class="chart-title">Customer Retention</div>
+    </div>
+    <div class="desc">Shows customer retention rates across different demographics and regions. Retaining customers is crucial for long-term business success, and understanding the retention rate helps optimize marketing strategies to keep loyal clients.</div>
+  </div>
+
+  <div class="chart-box">
+    <div class="box-header">
+      <i class="fas fa-hand-holding-usd" style="font-size: 30px; color: gold;"></i>
+      <div class="chart-title">Revenue Growth</div>
+    </div>
+    <div class="desc">Tracks the year-over-year revenue growth for the company’s top products and services. Monitoring revenue growth enables businesses to identify trends, measure success, and plan for future expansion.</div>
+  </div>
+</div>
+
+<!-- Fireflies Animation -->
+<script>
+const canvas = document.getElementById('firefliesCanvas');
+const ctx = canvas.getContext('2d');
+let fireflies = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function createFireflies(count) {
+  fireflies = [];
+  for (let i = 0; i < count; i++) {
+    fireflies.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 2 + 1,
+      dx: (Math.random() - 0.5) * 0.5,
+      dy: (Math.random() - 0.5) * 0.5,
+      glow: Math.random() * 0.8 + 0.2
+    });
+  }
+}
+
+function drawFireflies() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let f of fireflies) {
+    ctx.beginPath();
+    ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 215, 0, ${f.glow})`;
+    ctx.shadowColor = 'gold';
+    ctx.shadowBlur = 15;
+    ctx.fill();
+  }
+}
+
+function updateFireflies() {
+  for (let f of fireflies) {
+    f.x += f.dx;
+    f.y += f.dy;
+    if (f.x < 0 || f.x > canvas.width) f.dx *= -1;
+    if (f.y < 0 || f.y > canvas.height) f.dy *= -1;
+  }
+}
+
+function animate() {
+  drawFireflies();
+  updateFireflies();
+  requestAnimationFrame(animate);
+}
+
+resizeCanvas();
+createFireflies(80);
+animate();
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  createFireflies(80);
+});
+</script>
+
+</body>
+</html>

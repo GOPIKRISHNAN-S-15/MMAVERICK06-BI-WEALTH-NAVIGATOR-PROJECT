@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      position: relative;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .navbar {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      box-shadow: 0 0 10px #00ffd5;
+    }
+
+    .navbar .logo {
+      font-size: 22px;
+      color: #00ffd5;
+      font-weight: bold;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: #fff;
+      padding: 6px 12px;
+      transition: 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      background: #00ffd5;
+      color: #000;
+      border-radius: 5px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 60px 40px;
+      margin-top: 100px;
+      width: 90%;
+      max-width: 1200px;
+      box-shadow: 0 0 50px rgba(0, 255, 213, 0.4);
+      animation: fadeInUp 1s ease;
+      text-align: center;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 40px;
+      color: #00ffd5;
+      text-shadow: 0 0 15px rgba(0, 255, 213, 0.4);
+    }
+
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .member {
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      color: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .member:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0,255,213,0.4);
+    }
+
+    .leader {
+      border: 2px solid gold;
+    }
+
+    .member h2 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    a {
+      color: #00ffd5;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .container {
+        padding: 30px 20px;
+        margin-top: 120px;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+    }
+    footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: #aaa;
+}
+  </style>
+</head>
+<body>
+
+  <div id="particles-js"></div>
+<!-- Inside <nav class="navbar"> ... -->
+    <nav class="navbar">
+        <div class="logo">Cognos Insights</div>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="analytics.html">Analytics</a></li>
+          <li><a href="reports.html">Reports</a></li>
+          <li><a href="file:///C:/Users/Mani!/Downloads/BI-1%20-%20Copyofteam/BI-1%20-%20Copy/AboutUs.html">About Us</a></li>
+          <li><a href="ContactUs.html" style="color:#00ffd5;">Contact Us</a></li>
+          <li><a href="logout.html" style="color:#00ffd5;">Logout</a></li>
+        </ul>
+      </nav>
+      
+
+  <div class="container">
+    <h1>Meet Our Team</h1>
+    <div class="team">
+      <div class="member">
+        <h2>Deepak Kumar M</h2>
+        <p>Email: <a href="mailto:927623bad017@mkce.a.in">927623bad017@mkce.a.in</a></p>
+        <p>Phone: <a href="tel:+918667249455">+91 86672 49455</a></p>
+      </div>
+      <div class="member leader">
+        <h2>GopiKrishnan S</h2>
+        <p>Email: <a href="mailto:927623bad038@mkce.ac.in">927623bad038@mkce.ac.in</a></p>
+        <p>Phone: <a href="tel:+9119043603313">+91 190436 03313</a></p>
+      </div>
+      <div class="member">
+        <h2>Manikandan M</h2>
+        <p>Email: <a href="mailto:927623bad057@mkce.ac.in">927623bad057@mkce.ac.in</a></p>
+        <p>Phone: <a href="tel:+919361741677">9361741677</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Particles.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#00ffd5" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.3 },
+        "size": { "value": 3 },
+        "line_linked": { "enable": true, "distance": 150, "color": "#00ffd5", "opacity": 0.3, "width": 1 },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+  <footer style="margin-top: 40px; text-align: center; color: #aaa;">
+    © 2025 Cognos Insights | All rights reserved | Contact: Jon Snow@mkce.ac.in
+  </footer>
+  
+</body>
+</html>

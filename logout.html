@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logout - Cognos Dashboard</title>
+  <meta http-equiv="refresh" content="2;url=login.html">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fddb92, #d1fdff);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      animation: fadeInBackground 1s ease-in-out;
+    }
+
+    .message {
+      font-size: 24px;
+      padding: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      animation: slideIn 1s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    .message span {
+      font-weight: bold;
+      color: #5b86e5;
+    }
+
+    /* Background fade-in animation */
+    @keyframes fadeInBackground {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Slide-in effect for the message box */
+    @keyframes slideIn {
+      from {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Message text animation */
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .message p {
+      animation: fadeInText 3s infinite;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="message">
+    <p>👋 <span>Logging you out...</span><br>Please wait, redirecting to login page.</p>
+  </div>
+
+</body>
+</html>

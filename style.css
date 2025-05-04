@@ -1,0 +1,195 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background: url('https://i.pinimg.com/originals/44/6e/3b/446e3b79395a287ca32f7977dd83b290.jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  /* Top Branding */
+  .login-brand-top {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: fadeInDown 1.2s ease-out forwards;
+  }
+  
+  .login-brand-top h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    color: #ffcc70;
+    text-shadow: 0 0 12px rgba(255, 204, 112, 0.6);
+    animation: glowText 2s ease-in-out infinite alternate;
+  }
+  
+  .slogan {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #f1c40f;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeInUp 2s ease-in-out 0.5s forwards;
+    margin-top: 10px;
+  }
+  
+  /* Login Box */
+  .login-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 30px;
+    width: 350px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 204, 112, 0.2);
+    color: white;
+    animation: floaty 5s ease-in-out infinite, fadeInUp 1s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+  
+  .login-box h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 500;
+    font-size: 22px;
+  }
+  
+  /* Form Elements */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .form-group input::placeholder {
+    color: #ddd;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #ffcc70;
+    box-shadow: 0 0 8px #ffcc70;
+  }
+  
+  /* Remember Checkbox */
+  .form-options {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .form-options input {
+    margin-right: 10px;
+  }
+  
+  /* Button */
+  .btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #d35400;
+    box-shadow: 0 0 12px #ffcc70;
+  }
+  
+  /* Animations */
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes glowText {
+    0% { text-shadow: 0 0 10px #ffcc70; }
+    100% { text-shadow: 0 0 20px #ffcc70, 0 0 30px #e67e22; }
+  }
+  /* Welcome Overlay */
+.welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(18px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    animation: fadeInOverlay 1.2s ease forwards;
+  }
+  
+  .welcome-title {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    color: #f39c12;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    animation: glowText 1.5s ease-in-out infinite alternate;
+  }
+  
+  .overlay-slogan {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #f1c40f;
+    margin-top: 16px;
+    opacity: 0;
+    animation: fadeInUp 2s ease-out 0.7s forwards;
+    letter-spacing: 1.5px;
+  }
+  
+  @keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  /* Full Screen Particle Container */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  /* Adjust background and content to sit above particles */
+  body {
+    z-index: 1;
+  }
+  

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBM Cognos Dashboard - Enhanced</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #ffffff;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      color: white;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #50d8d7;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .nav-links a {
+      color: #f2fcfe;
+      background: linear-gradient(145deg, #1c92d2, #f2fcfe);
+      text-decoration: none;
+      font-size: 15px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-links a:hover {
+      background: linear-gradient(145deg, #5ee7df, #b490ca);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 8px rgba(94, 231, 223, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    /* Dashboard Container */
+    .dashboard-container {
+      position: relative;
+      width: 95%;
+      height: calc(100vh - 100px);
+      margin: 20px auto;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      display: block;
+    }
+
+    /* Animations */
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 70px;
+        right: 30px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .nav-links a {
+        margin: 10px 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    /* Fireflies Canvas */
+    #fireflyCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar animate__animated animate__fadeInDown">
+    <div class="logo">Cognos Dashboard</div>
+    <div class="nav-links animate__animated animate__fadeInRight">
+      <a href="home.html">Home</a>
+      <a href="reports.html">Reports</a>
+      <a href="analytics.html">Analytics</a>
+      <a href="charts.html">Features</a>
+      <a href="AboutUs.html">About</a>
+      <a href="ContactUs.html">Contact Us</a>
+      <a href="logout.html">Logout</a>
+    </div>
+  </div>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    <iframe id="dashboard" src="https://us1.ca.analytics.ibm.com/bi/?perspective=dashboard&pathRef=.my_folders%2FTeam-dashboard%2528sample%2529-1&closeWindowOnLastView=true&ui_appbar=false&ui_navbar=false&shareMode=embedded&action=view&mode=dashboard&subView=model00000195a8862ef3_00000000" onload="hideLoader()"></iframe>
+  </div>
+
+  <!-- Firefly Effect Canvas -->
+  <canvas id="fireflyCanvas"></canvas>
+
+  <script>
+    // Firefly effect
+    let fireflies = [];
+
+    function createFirefly() {
+      let size = Math.random() * 3 + 1; // Random size for fireflies
+      let x = Math.random() * window.innerWidth; // Random x position
+      let y = Math.random() * window.innerHeight; // Random y position
+      let speed = Math.random() * 0.5 + 0.1; // Speed of the fireflies
+      let glow = Math.random() * 0.4 + 0.2; // Glow intensity
+
+      fireflies.push({ x, y, size, speed, glow });
+    }
+
+    function animateFireflies() {
+      const canvas = document.getElementById('fireflyCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      fireflies.forEach((firefly, index) => {
+        // Move firefly downwards
+        firefly.y += firefly.speed;
+        
+        // Reset position when firefly goes out of view (from bottom to top)
+        if (firefly.y > window.innerHeight) {
+          firefly.y = -firefly.size;
+          firefly.x = Math.random() * window.innerWidth; // Random x position when resetting
+        }
+
+        // Draw firefly
+        ctx.beginPath();
+        ctx.arc(firefly.x, firefly.y, firefly.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 223, 0, ${firefly.glow})`; // Golden color with glow
+        ctx.shadowColor = `rgba(255, 223, 0, ${firefly.glow})`; // Golden glow
+        ctx.shadowBlur = 10;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animateFireflies); // Keep animating the fireflies
+    }
+
+    // Initialize canvas and fireflies
+    const canvas = document.getElementById('fireflyCanvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Create a bunch of fireflies to start
+    for (let i = 0; i < 200; i++) {
+      createFirefly();
+    }
+
+    animateFireflies();
+  </script>
+</body>
+</html>

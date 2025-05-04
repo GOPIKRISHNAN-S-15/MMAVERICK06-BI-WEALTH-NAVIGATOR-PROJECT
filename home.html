@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preload" href="dashboard.html" as="document">
+  <link rel="prefetch" href="dashboard.html">
+  <meta charset="UTF-8">
+  <title>Home - Cognos Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(ellipse at bottom, #111 0%, #000 100%);
+      color: #eee;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 2;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .navbar-links a:hover {
+      color: #FF4081;
+    }
+
+    .navbar-links a.home {
+  color: #FF4081; /* Use a different color to highlight the text */
+  text-decoration: underline; /* Optional: underline the text */
+}
+
+
+    .logout-button {
+      background-color: #e74c3c;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .logout-button:hover {
+      background-color: #c0392b;
+    }
+
+    .home-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: calc(100vh - 80px);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .home-content h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      animation: slideIn 1s ease forwards;
+    }
+
+    .home-content p {
+      font-size: 20px;
+      max-width: 600px;
+      color: #ddd;
+      margin-bottom: 40px;
+      animation: fadeIn 2s ease;
+    }
+
+    .floating-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      justify-items: center;
+    }
+
+    .floating-buttons a {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      padding: 80px 100px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+      text-transform: uppercase;
+
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      transition: all 0.4s ease;
+      backdrop-filter: blur(8px);
+      transform: translateY(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .floating-buttons a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(1.07) translateY(0px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Particle canvas */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/09/audio_a09c1e06e3.mp3?filename=peaceful-galaxy-135998.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">🏠 Home</div>
+    <div class="navbar-links">
+      <a href="home.html" class="home">Home</a> <!-- Highlighted Home button -->
+      <a href="AboutUs.html">About Us</a>
+      <a href="ContactUs.html">Contact Us</a>
+    </div>
+    <button class="logout-button" onclick="location.href='logout.html'">Logout</button>
+  </div>
+
+  <!-- Home Content -->
+  <div class="home-content">
+    <h1>Wealth Navigator</h1>
+    <p>
+      This platform helps you visualize data-driven reports and insights using IBM Cognos.
+      Navigate to your dashboard, check reports, and manage your settings with ease.
+    </p>
+
+    <div class="floating-buttons">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="reports.html">Reports</a>
+      <a href="analytics.html">Analytics</a>
+      <a href="charts.html">Features</a>
+    </div>
+  </div>
+
+  <!-- Particle.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      "particles": {
+        "number": { "value": 80 },
+        "color": { "value": "#ffffff" },
+        "shape": {
+          "type": "circle",
+          "stroke": { "width": 0, "color": "#000000" },
+          "polygon": { "nb_sides": 5 }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": true,
+          "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": { "enable": false }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "detect_on": "window",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+</body>
+</html>
