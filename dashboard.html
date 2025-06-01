@@ -22,7 +22,6 @@
       overflow: hidden;
     }
 
-    /* Navbar */
     .navbar {
       background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(8px);
@@ -85,12 +84,30 @@
       border-radius: 2px;
     }
 
-    /* Dashboard Container */
     .dashboard-container {
       position: relative;
       width: 95%;
-      height: calc(100vh - 100px);
+      height: calc(100vh - 120px);
       margin: 20px auto;
+    }
+
+    .fullscreen-btn {
+      display: inline-block;
+      margin: 0 auto 10px;
+      background: #50d8d7;
+      color: #000;
+      border: none;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease;
+    }
+
+    .fullscreen-btn:hover {
+      background: #5ee7df;
     }
 
     iframe {
@@ -104,7 +121,6 @@
       display: block;
     }
 
-    /* Animations */
     @keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -137,7 +153,6 @@
       }
     }
 
-    /* Fireflies Canvas */
     #fireflyCanvas {
       position: fixed;
       top: 0;
@@ -162,66 +177,75 @@
     </div>
   </div>
 
+
+
   <!-- Dashboard Container -->
   <div class="dashboard-container">
-    <iframe id="dashboard" src="https://us1.ca.analytics.ibm.com/bi/?perspective=dashboard&pathRef=.my_folders%2FTeam-dashboard%2528sample%2529-1&closeWindowOnLastView=true&ui_appbar=false&ui_navbar=false&shareMode=embedded&action=view&mode=dashboard&subView=model00000195a8862ef3_00000000" onload="hideLoader()"></iframe>
+    <iframe id="dashboard" 
+      src="https://us1.ca.analytics.ibm.com/bi/?perspective=dashboard&pathRef=.my_folders%2FTeam-dashboard%2528sample%2529-1&closeWindowOnLastView=true&ui_appbar=false&ui_navbar=false&shareMode=embedded&action=view&mode=dashboard&subView=model00000195a8862ef3_00000000" 
+      allowfullscreen>
+    </iframe>
   </div>
 
   <!-- Firefly Effect Canvas -->
   <canvas id="fireflyCanvas"></canvas>
 
   <script>
+    // Fullscreen function
+    function openFullscreen() {
+      const iframe = document.getElementById("dashboard");
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      } else {
+        alert("Your browser doesn't support fullscreen API.");
+      }
+    }
+
     // Firefly effect
     let fireflies = [];
 
     function createFirefly() {
-      let size = Math.random() * 3 + 1; // Random size for fireflies
-      let x = Math.random() * window.innerWidth; // Random x position
-      let y = Math.random() * window.innerHeight; // Random y position
-      let speed = Math.random() * 0.5 + 0.1; // Speed of the fireflies
-      let glow = Math.random() * 0.4 + 0.2; // Glow intensity
-
+      let size = Math.random() * 3 + 1;
+      let x = Math.random() * window.innerWidth;
+      let y = Math.random() * window.innerHeight;
+      let speed = Math.random() * 0.5 + 0.1;
+      let glow = Math.random() * 0.4 + 0.2;
       fireflies.push({ x, y, size, speed, glow });
     }
 
     function animateFireflies() {
       const canvas = document.getElementById('fireflyCanvas');
       const ctx = canvas.getContext('2d');
-      
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      fireflies.forEach((firefly, index) => {
-        // Move firefly downwards
+      fireflies.forEach((firefly) => {
         firefly.y += firefly.speed;
-        
-        // Reset position when firefly goes out of view (from bottom to top)
         if (firefly.y > window.innerHeight) {
           firefly.y = -firefly.size;
-          firefly.x = Math.random() * window.innerWidth; // Random x position when resetting
+          firefly.x = Math.random() * window.innerWidth;
         }
 
-        // Draw firefly
         ctx.beginPath();
         ctx.arc(firefly.x, firefly.y, firefly.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 223, 0, ${firefly.glow})`; // Golden color with glow
-        ctx.shadowColor = `rgba(255, 223, 0, ${firefly.glow})`; // Golden glow
+        ctx.fillStyle = `rgba(255, 223, 0, ${firefly.glow})`;
+        ctx.shadowColor = `rgba(255, 223, 0, ${firefly.glow})`;
         ctx.shadowBlur = 10;
         ctx.fill();
       });
 
-      requestAnimationFrame(animateFireflies); // Keep animating the fireflies
+      requestAnimationFrame(animateFireflies);
     }
 
-    // Initialize canvas and fireflies
     const canvas = document.getElementById('fireflyCanvas');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
-    // Create a bunch of fireflies to start
     for (let i = 0; i < 200; i++) {
       createFirefly();
     }
-
     animateFireflies();
   </script>
 </body>
